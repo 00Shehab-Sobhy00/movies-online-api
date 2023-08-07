@@ -1,0 +1,65 @@
+  .custom-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh;
+  }
+
+  .custom-card .card {
+    max-width: 700px;
+    background-color: black;
+  }
+  .custom-card .card-body {
+    text-align: center;
+    display: block;
+  }
+
+  .custom-card .card-img-top {
+    max-height: 500px;
+    object-fit: contain;
+  }
+
+
+
+  hr {
+    margin-left: auto;
+    margin-right: auto;
+    border-top-style: dotted;
+    border-color: rgb(255, 255, 255);
+    border-width: 5px;
+    width: 5%;
+
+
+  }
+  h2,
+  h3,
+  p,
+  li {
+    color: rgb(255, 255, 255);
+  }
+
+
+  #actorImg {
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    padding: 2%;
+
+  }
+  #actors {
+    position: relative;
+    text-align: center;
+    display: block;
+  }
+
+  .actor-box {
+    padding: 6%;
+    text-align: center;
+    display: block;
+  }
+
+  .popularity {
+    display: inline-block;
+padding: 3%;
+margin: 3%;
+  }

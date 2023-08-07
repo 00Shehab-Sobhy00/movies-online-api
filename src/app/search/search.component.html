@@ -1,0 +1,80 @@
+ <!-- Nav Bar -->
+ <nav class="navbar bg-dark navbar-expand-lg "   data-bs-theme="#e3f2fd">
+  <img src="https://static.sketchfab.com/img/press/logos/sketchfab-logo-black.png" alt="Logo" style="margin-left: 10px; width:40px; ">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+   <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <div class="navbar-nav">
+    <button style="border: 2rem; font-size: larger; color: aliceblue;" routerLinkActive="active current" class="nav-item nav-link"
+     (click)="returnPopularPage()"> Popular Movies  </button>
+   </div>
+    <div class=" navigation">
+    
+       </div>
+    </div>
+ <form class="d-flex" role="search">
+     <input class="form-control me-2" type="search" placeholder="Search" name="first" aria-label="Search" [(ngModel)]="movTitle">
+     <button class="btn btn-outline-light" (click)="matchSearch() " >Search</button>
+   </form>
+</nav>
+
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+<div class="d-flex align-content-around flex-wrap">
+  <div class="card" style="width: 18rem;" *ngFor="let movie of matchSearchMovies">
+    <img src="{{this.service.imgUrl}}{{movie.backdrop_path}}" class="card-img-top">
+    <div class="card-body">
+      <h2 class="card-title">{{movie.title}}</h2>
+      <p class="card-text">Original Language: {{movie.original_language}}</p>
+      <p class="card-text">Popularity: {{movie.popularity}}</p>
+      <div class="d-flex justify-content-between">
+        <button mat-button id="cardBtn" class="btn btn-outline-light" style="color: rgb(255, 255, 255); background-color: hsla(213, 77%, 14%, 1);"
+         [routerLink]="['/details', pageNumber, movie.id]" (click)="increaseIndex()" 
+         [queryParams]="{title: movie.title, overview: movie.overview, rate: movie.vote_average, poster_path: movie.poster_path , SearchTitle : movTitle }"
+        >Details</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <button class="carousel-control-prev" type="button" *ngIf="pageNumber > 1"   (click)=" previousPage()" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button"  *ngIf=" pageNumber < matchSearchMovies.length && matchSearchMovies.length > 16 " (click)="nextPage()" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button id="render" class="btn btn-outline-light" type="previous" *ngIf="pageNumber > 1"   (click)=" previousPage()">  <<< </button>
+<button  id="render" class="btn btn-outline-light" type="next" *ngIf=" pageNumber < matchSearchMovies.length && matchSearchMovies.length > 16 " (click)="nextPage()"  style="margin: 5px;" > >>> </button> -->

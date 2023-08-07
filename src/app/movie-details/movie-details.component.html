@@ -1,0 +1,49 @@
+  <nav class="navbar bg-dark navbar-expand-lg "   data-bs-theme="#e3f2fd">
+    <img src="https://static.sketchfab.com/img/press/logos/sketchfab-logo-black.png" alt="Logo" style="margin-left: 10px; width:40px; ">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+   <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <div class="navbar-nav">
+    <button style="border: 2rem; font-size: larger; color: aliceblue;" routerLinkActive="active current" class="nav-item nav-link" (click)="returnPopularPage()"> Popular Movies  </button>
+    <button *ngIf="searchResult  != null || searchResult != undefined"  style="border: 2rem; font-size: larger; color: aliceblue;" routerLinkActive="active current" class="nav-item nav-link" 
+    (click)="currentSearchPage()" > Your Search   </button>
+   </div>
+
+    </div>
+</nav>
+
+
+  <div class="align-self-baseline custom-card">
+    <div class="card mb-3">
+      <img src="{{this.service.imgUrl}}{{poster_path}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2 class="card-title">{{title}}</h2>
+        <p class="card-text" style="color: #ffffff6c;;">{{overview}}.</p>
+        <br> 
+        <hr>
+        <br>
+        <h2 class="card-title"> Rate  {{rate}}   <i class="bi bi-star"></i> </h2>
+        <br> 
+        <hr>
+        <br>
+        <h2 class="card-title">Actors</h2>
+        <section class="row" id="actors">
+          <div class="actor-box col-md-4" *ngFor="let actor of actors">
+           <img id="actorImg"  class="card-img" src="{{this.service.imgUrl}}{{actor.profile_path}}" alt="{{actor.name}}">
+            <h3 class="actor-title">{{actor.name}}</h3>
+
+            <section class="popularity" >
+              <h3 class="card-title">Popularity </h3>  
+              <p class="card-text" style="color: #ffffff6c;;">{{actor.popularity}}</p>
+             </section>
+          </div>
+         
+        </section>
+      
+     
+      </div>
+    </div>
+  </div>
+
