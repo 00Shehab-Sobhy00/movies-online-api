@@ -3,14 +3,18 @@ h1 {
 
     font-weight: 900;
     color: aliceblue;
-    margin-top: 10%;
+   
 }
 
+#icon{
+    width: 70px;
+    height: 70px;
+    margin: 2%;
+}
 
-.not found {
+.notFound {
     position: relative;
-    padding-left: 50px;
     text-align: center;
-
+    margin-top: 10%; 
 }
  
