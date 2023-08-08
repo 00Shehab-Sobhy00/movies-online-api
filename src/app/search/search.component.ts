@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   movTitle!: string | null
   pageNumber: number = 1
   index = 1
+ previousMovTitle!: string  | null;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -34,7 +35,7 @@ export class SearchComponent implements OnInit {
         }
         return this.movTitle;
       })
-    this.matchSearch();
+     this.matchSearch();
 
     // no need to reload all page in order to update the page value
     this.route.params.subscribe(
@@ -46,6 +47,14 @@ export class SearchComponent implements OnInit {
     )
   }
   matchSearch() {
+    const currentMovTitle = this.movTitle;
+    if (currentMovTitle !== this.previousMovTitle){
+      this.pageNumber =1;
+      this.navigateSearch()
+    }
+   
+
+      this.previousMovTitle = currentMovTitle;
     console.log(this.movTitle);
     console.log(this.pageNumber);
     
