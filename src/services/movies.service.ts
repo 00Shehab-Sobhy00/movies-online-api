@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MoviesService {
   imgUrl = "https://image.tmdb.org/t/p/w500/"
+
   constructor(private http: HttpClient, private router: Router,
     private route: ActivatedRoute
     ) { }
@@ -26,6 +27,7 @@ export class MoviesService {
 
 
   getMatchSearch(movTitle: string, pageNumber: number) {
+  
     return this.http.get(`https://api.themoviedb.org/3/search/movie?query=${movTitle}&include_adult=false&page=${pageNumber}`)
       .pipe(
         map(respon => {

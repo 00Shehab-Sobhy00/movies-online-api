@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   movTitle!: string | null
   pageNumber: number = 1
   index = 1
- previousMovTitle!: string  | null;
+  currentMovTitle!: string | null; 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
       params => {
         if (params.get('SearchTitle')) {
           this.movTitle = params.get('SearchTitle');
+          this.currentMovTitle = this.movTitle;
         }
         return this.movTitle;
       })
@@ -42,21 +43,20 @@ export class SearchComponent implements OnInit {
       (params: Params) => {
         if (params['pageNumber']){
           this.matchSearch();
+          console.log(this.currentMovTitle);
+          
         }
       }
     )
   }
   matchSearch() {
-    const currentMovTitle = this.movTitle;
-    if (currentMovTitle !== this.previousMovTitle){
-      this.pageNumber =1;
+    if (this.currentMovTitle !== this.movTitle){
+       this.currentMovTitle = this.movTitle;
+      
+       this.pageNumber =1;
       this.navigateSearch()
     }
-   
 
-      this.previousMovTitle = currentMovTitle;
-    console.log(this.movTitle);
-    console.log(this.pageNumber);
     
     this.service.getMatchSearch(this.movTitle!, this.pageNumber)
       .subscribe({
